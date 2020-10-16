@@ -15,9 +15,9 @@ import javax.naming.directory.DirContext;
 public abstract class Builder {
    Product product = new Product();
 
-  public void addA(){};
-  public void addB(){};
-  public void addC(){};
+  public abstract void addA();
+  public abstract void addB();
+  public abstract void addC();
   public Product getResult(){
     return this.product;
   }
