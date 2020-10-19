@@ -55,10 +55,18 @@ class Product{
 
 class Director{
   private Builder builder;
-  Director(Builder builder){
+  public Director(Builder builder){
     this.builder = builder;
   }
+
+  public void setBuilder(Builder builder) {
+    this.builder = builder;
+  }
+
   public Product construct(){
+    builder.addA();
+    builder.addB();
+    builder.addC();
     return builder.getResult();
   }
 }
@@ -67,9 +75,11 @@ class Director{
 class Client{
   public static void main(String[] args) {
     ConcreteBuilder1 concreteBuilder1 = new ConcreteBuilder1();
-    concreteBuilder1.addA();
-    concreteBuilder1.addB();
-    concreteBuilder1.addC();
+
+    // 最好可以将构建的先后顺序交给指挥者定义
+//    concreteBuilder1.addA();
+//    concreteBuilder1.addB();
+//    concreteBuilder1.addC();
     Director director = new Director(concreteBuilder1);
     Product product = director.construct();
     System.out.println(product);
